@@ -25,7 +25,7 @@ minimum version and extensions required for it to run. Features
 advanced debug output which shows which functions require which
 version.
 
-This class has in PEAR status: %{_status}.
+In PEAR status of this package is: %{_status}.
 
 %description -l pl
 PHP_CompatInfo przetwarza plik/katalog/skrypt/tablicê w celu
