@@ -29,7 +29,7 @@ In PEAR status of this package is: %{_status}.
 
 %description -l pl
 PHP_CompatInfo przetwarza plik/katalog/skrypt/tablicê w celu
-okreslenia minimalnej wersji i wymaganych rozszereñ z jakimi bêdzie
+okre¶lenia minimalnej wersji i wymaganych rozszerzeñ z jakimi bêdzie
 dzia³aæ. Pakiet ten cechuje rozbudowane wy¶wietlanie informacji
 diagnostycznych (debug) pokazuj±cych która funkcja wymaga jakiej
 wersji.
