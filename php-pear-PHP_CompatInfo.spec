@@ -5,7 +5,7 @@
 %define		_pearname	%{_class}_%{_subclass}
 
 Summary:	%{_pearname} - determine minimal requirements for a program
-Summary(pl):	%{_pearname} - okre¶l minimalne wymagania programu
+Summary(pl):	%{_pearname} - okre¶lanie minimalnych wymagañ programu
 Name:		php-pear-%{_pearname}
 Version:	0.7.0
 Release:	1
@@ -20,17 +20,19 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-PHP_CompatInfo will parse a file/folder/script/array to find out the minimum
-version and extensions required for it to run. Features advanced debug output
-which shows which functions require which version.
+PHP_CompatInfo will parse a file/folder/script/array to find out the
+minimum version and extensions required for it to run. Features
+advanced debug output which shows which functions require which
+version.
 
 This class has in PEAR status: %{_status}.
 
 %description -l pl
-PHP_CompatInfo przetwarza plik/katalog/skrypt/tablicê w celu okreslenia
-minmalnej wersji i wymaganych rozszereñ z jakimi bêdzie dzia³aæ. Pakiet ten
-cechuje rozbudowane wy¶wietlanie informacji diagnostycznych (debug)
-pokazuj±cych która funkcja wymaga jakiej wersji.
+PHP_CompatInfo przetwarza plik/katalog/skrypt/tablicê w celu
+okreslenia minimalnej wersji i wymaganych rozszereñ z jakimi bêdzie
+dzia³aæ. Pakiet ten cechuje rozbudowane wy¶wietlanie informacji
+diagnostycznych (debug) pokazuj±cych która funkcja wymaga jakiej
+wersji.
 
 Ta klasa ma w PEAR status: %{_status}.
 
