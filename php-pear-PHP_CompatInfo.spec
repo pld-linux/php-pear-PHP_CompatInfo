@@ -7,12 +7,12 @@
 Summary:	%{_pearname} - determine minimal requirements for a program
 Summary(pl):	%{_pearname} - okre¶lanie minimalnych wymagañ programu
 Name:		php-pear-%{_pearname}
-Version:	0.7.0
+Version:	0.8.2
 Release:	1
 License:	PHP 2.02
 Group:		Development/Languages/PHP
 Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tgz
-# Source0-md5:	b9c97cbba9b5ac5592d3537707900c22
+# Source0-md5:	3a3d9c2b3008c61df8521349fe95a76c
 URL:		http://pear.php.net/package/PHP_CompatInfo/
 BuildRequires:	rpm-php-pearprov >= 4.0.2-98
 Requires:	php-pear
