@@ -8,16 +8,19 @@ Summary:	%{_pearname} - determine minimal requirements for a program
 Summary(pl):	%{_pearname} - okre¶lanie minimalnych wymagañ programu
 Name:		php-pear-%{_pearname}
 Version:	1.0.0
-Release:	1
+Release:	1.4
 License:	PHP 2.02
 Group:		Development/Languages/PHP
 Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tgz
 # Source0-md5:	ede40f01b25e76ddc87beed18adc7065
 URL:		http://pear.php.net/package/PHP_CompatInfo/
-BuildRequires:	rpm-php-pearprov >= 4.0.2-98
+BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 Requires:	php-pear
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+# exclude optional dependencies
+%define		_noautoreq	'pear(Console/Table.*)' 'pear(Console/Getopt.*)'
 
 %description
 PHP_CompatInfo will parse a file/folder/script/array to find out the
@@ -37,20 +40,30 @@ wersji.
 Ta klasa ma w PEAR status: %{_status}.
 
 %prep
-%setup -q -c
+%pear_package_setup
+
+# fix hierarchy
+mv ./%{php_pear_dir}/%{_class}/scripts docs
+install -d ./%{php_pear_dir}/data
+mv ./%{php_pear_dir}/{%{_class}/data,data/%{_pearname}}
+sed -i -e 's,%{_class}/data,data/%{_pearname},' ./%{php_pear_dir}/%{_class}/%{_subclass}.php
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{php_pear_dir}/%{_class}/data
-
-install %{_pearname}-%{version}/%{_subclass}*.php $RPM_BUILD_ROOT%{php_pear_dir}/%{_class}
-install %{_pearname}-%{version}/data/* $RPM_BUILD_ROOT%{php_pear_dir}/%{_class}/data
+install -d $RPM_BUILD_ROOT%{php_pear_dir}
+%pear_package_install
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc %{_pearname}-%{version}/{docs,scripts}
+%doc install.log optional-packages.txt
+%doc docs/%{_pearname}/docs/*
+%doc docs/scripts
+%{php_pear_dir}/.registry/*.reg
 %{php_pear_dir}/%{_class}/*.php
-%{php_pear_dir}/%{_class}/data
+%dir %{php_pear_dir}/%{_class}/%{_subclass}
+%{php_pear_dir}/%{_class}/%{_subclass}/*.php
+
+%{php_pear_dir}/data/%{_pearname}
