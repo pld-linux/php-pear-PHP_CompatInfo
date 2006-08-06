@@ -7,12 +7,12 @@
 Summary:	%{_pearname} - determine minimal requirements for a program
 Summary(pl):	%{_pearname} - okre¶lanie minimalnych wymagañ programu
 Name:		php-pear-%{_pearname}
-Version:	1.0.0
-Release:	3
+Version:	1.1.2
+Release:	1
 License:	PHP 2.02
 Group:		Development/Languages/PHP
 Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tgz
-# Source0-md5:	ede40f01b25e76ddc87beed18adc7065
+# Source0-md5:	354feba65b622bc06168824ea79092d9
 URL:		http://pear.php.net/package/PHP_CompatInfo/
 BuildRequires:	php-pear-PEAR
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
@@ -44,12 +44,6 @@ Ta klasa ma w PEAR status: %{_status}.
 %prep
 %pear_package_setup
 
-# fix hierarchy
-mv ./%{php_pear_dir}/%{_class}/scripts docs
-install -d ./%{php_pear_dir}/data
-mv ./%{php_pear_dir}/{%{_class}/data,data/%{_pearname}}
-sed -i -e 's,%{_class}/data,data/%{_pearname},' ./%{php_pear_dir}/%{_class}/%{_subclass}.php
-
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{php_pear_dir}
@@ -62,10 +56,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc install.log optional-packages.txt
 %doc docs/%{_pearname}/docs/*
-%doc docs/scripts
 %{php_pear_dir}/.registry/*.reg
 %{php_pear_dir}/%{_class}/*.php
 %dir %{php_pear_dir}/%{_class}/%{_subclass}
 %{php_pear_dir}/%{_class}/%{_subclass}/*.php
-
-%{php_pear_dir}/data/%{_pearname}
