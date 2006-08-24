@@ -8,7 +8,7 @@ Summary:	%{_pearname} - determine minimal requirements for a program
 Summary(pl):	%{_pearname} - okre¶lanie minimalnych wymagañ programu
 Name:		php-pear-%{_pearname}
 Version:	1.2.0
-Release:	1
+Release:	2
 License:	PHP 2.02
 Group:		Development/Languages/PHP
 Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tgz
@@ -23,7 +23,7 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # exclude optional dependencies
-%define		_noautoreq	'pear(Console/Table.*)' 'pear(Console/Getopt.*)'
+# NB! Console/Table and Console/Getopt are required by CLI
 
 %description
 PHP_CompatInfo will parse a file/folder/script/array to find out the
@@ -42,6 +42,14 @@ wersji.
 
 Ta klasa ma w PEAR status: %{_status}.
 
+%package cli
+Summary:	CLI for PHP_CompatInfo
+Group:		Development/Languages/PHP
+Requires:	%{name} = %{version}-%{release}
+
+%description cli
+CLI for PHP_CompatInfo.
+
 %prep
 %pear_package_setup
 
@@ -55,17 +63,17 @@ install %{SOURCE1} $RPM_BUILD_ROOT%{_bindir}/php-compatinfo
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post
-if [ -f %{_docdir}/%{name}-%{version}/optional-packages.txt ]; then
-	cat %{_docdir}/%{name}-%{version}/optional-packages.txt
-fi
-
 %files
 %defattr(644,root,root,755)
-%doc install.log optional-packages.txt
+%doc install.log
 %doc docs/%{_pearname}/docs/*
 %{php_pear_dir}/.registry/*.reg
-%attr(755,root,root) %{_bindir}/*
-%{php_pear_dir}/%{_class}/*.php
+%{php_pear_dir}/%{_class}/CompatInfo.php
 %dir %{php_pear_dir}/%{_class}/%{_subclass}
-%{php_pear_dir}/%{_class}/%{_subclass}/*.php
+%{php_pear_dir}/%{_class}/%{_subclass}/const_array.php
+%{php_pear_dir}/%{_class}/%{_subclass}/func_array.php
+
+%files cli
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/*
+%dir %{php_pear_dir}/%{_class}/%{_subclass}/Cli.php
