@@ -44,11 +44,15 @@ Ta klasa ma w PEAR status: %{_status}.
 
 %package cli
 Summary:	CLI for PHP_CompatInfo
+Summary(pl):	Interfejs linii poleceñ dla PHP_CompatInfo
 Group:		Development/Languages/PHP
 Requires:	%{name} = %{version}-%{release}
 
 %description cli
 CLI for PHP_CompatInfo.
+
+%description cli -l pl
+Interfejs linii poleceñ dla PHP_CompatInfo.
 
 %prep
 %pear_package_setup
