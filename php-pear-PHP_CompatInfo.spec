@@ -8,7 +8,7 @@ Summary:	%{_pearname} - determine minimal requirements for a program
 Summary(pl):	%{_pearname} - okre¶lanie minimalnych wymagañ programu
 Name:		php-pear-%{_pearname}
 Version:	1.3.1
-Release:	2
+Release:	3
 License:	PHP 2.02
 Group:		Development/Languages/PHP
 Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tgz
@@ -19,6 +19,7 @@ BuildRequires:	php-pear-PEAR
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	rpmbuild(macros) >= 1.300
 Requires:	php-pear
+Requires:	php-tokenizer
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
