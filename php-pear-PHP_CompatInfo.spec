@@ -73,7 +73,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc docs/%{_pearname}/docs/*
 %{php_pear_dir}/.registry/*.reg
 %{php_pear_dir}/%{_class}/CompatInfo.php
-%{php_pear_dir}/%{_class}/%{_subclass}
+%dir %{php_pear_dir}/%{_class}/%{_subclass}
 %{php_pear_dir}/%{_class}/%{_subclass}/const_array.php
 %{php_pear_dir}/%{_class}/%{_subclass}/func_array.php
 
