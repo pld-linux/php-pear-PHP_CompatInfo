@@ -5,7 +5,7 @@
 %define		_pearname	%{_class}_%{_subclass}
 
 Summary:	%{_pearname} - determine minimal requirements for a program
-Summary(pl.UTF-8):   %{_pearname} - określanie minimalnych wymagań programu
+Summary(pl.UTF-8):	%{_pearname} - określanie minimalnych wymagań programu
 Name:		php-pear-%{_pearname}
 Version:	1.4.0
 Release:	1
@@ -45,7 +45,7 @@ Ta klasa ma w PEAR status: %{_status}.
 
 %package cli
 Summary:	CLI for PHP_CompatInfo
-Summary(pl.UTF-8):   Interfejs linii poleceń dla PHP_CompatInfo
+Summary(pl.UTF-8):	Interfejs linii poleceń dla PHP_CompatInfo
 Group:		Development/Languages/PHP
 Requires:	%{name} = %{version}-%{release}
 
