@@ -5,7 +5,7 @@
 %define		_pearname	%{_class}_%{_subclass}
 
 Summary:	%{_pearname} - determine minimal requirements for a program
-Summary(pl):	%{_pearname} - okre¶lanie minimalnych wymagañ programu
+Summary(pl.UTF-8):   %{_pearname} - okreÅ›lanie minimalnych wymagaÅ„ programu
 Name:		php-pear-%{_pearname}
 Version:	1.4.0
 Release:	1
@@ -34,26 +34,26 @@ version.
 
 In PEAR status of this package is: %{_status}.
 
-%description -l pl
-PHP_CompatInfo przetwarza plik/katalog/skrypt/tablicê w celu
-okre¶lenia minimalnej wersji i wymaganych rozszerzeñ z jakimi bêdzie
-dzia³aæ. Pakiet ten cechuje rozbudowane wy¶wietlanie informacji
-diagnostycznych (debug) pokazuj±cych która funkcja wymaga jakiej
+%description -l pl.UTF-8
+PHP_CompatInfo przetwarza plik/katalog/skrypt/tablicÄ™ w celu
+okreÅ›lenia minimalnej wersji i wymaganych rozszerzeÅ„ z jakimi bÄ™dzie
+dziaÅ‚aÄ‡. Pakiet ten cechuje rozbudowane wyÅ›wietlanie informacji
+diagnostycznych (debug) pokazujÄ…cych ktÃ³ra funkcja wymaga jakiej
 wersji.
 
 Ta klasa ma w PEAR status: %{_status}.
 
 %package cli
 Summary:	CLI for PHP_CompatInfo
-Summary(pl):	Interfejs linii poleceñ dla PHP_CompatInfo
+Summary(pl.UTF-8):   Interfejs linii poleceÅ„ dla PHP_CompatInfo
 Group:		Development/Languages/PHP
 Requires:	%{name} = %{version}-%{release}
 
 %description cli
 CLI for PHP_CompatInfo.
 
-%description cli -l pl
-Interfejs linii poleceñ dla PHP_CompatInfo.
+%description cli -l pl.UTF-8
+Interfejs linii poleceÅ„ dla PHP_CompatInfo.
 
 %prep
 %pear_package_setup
