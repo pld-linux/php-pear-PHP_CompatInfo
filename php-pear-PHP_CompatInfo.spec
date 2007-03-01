@@ -7,23 +7,24 @@
 Summary:	%{_pearname} - determine minimal requirements for a program
 Summary(pl):	%{_pearname} - okre¶lanie minimalnych wymagañ programu
 Name:		php-pear-%{_pearname}
-Version:	1.3.1
+Version:	1.4.1
 Release:	1
 License:	PHP 2.02
 Group:		Development/Languages/PHP
 Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tgz
-# Source0-md5:	1f61e0a815c4c1a753e45105a5bf7d72
-Source1:	PHP_CompatInfo.php
+# Source0-md5:	eff50211512322d7197c65e25816b287
+Patch0:		%{name}-cli.patch
 URL:		http://pear.php.net/package/PHP_CompatInfo/
 BuildRequires:	php-pear-PEAR
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	rpmbuild(macros) >= 1.300
+Requires:	php(tokenizer)
 Requires:	php-pear
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # exclude optional dependencies
-# NB! Console/Table and Console/Getopt are required by CLI
+# NB! Console/Table and Console/Getopt (Console/Getargs) are required by CLI
 
 %description
 PHP_CompatInfo will parse a file/folder/script/array to find out the
@@ -56,13 +57,15 @@ Interfejs linii poleceñ dla PHP_CompatInfo.
 
 %prep
 %pear_package_setup
+%patch0 -p1
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{php_pear_dir},%{_bindir}}
 %pear_package_install
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_bindir}/php-compatinfo
+mv $RPM_BUILD_ROOT%{php_pear_dir}/%{_class}/%{_subclass}/pcicmd.php $RPM_BUILD_ROOT%{_bindir}/pcicmd
+chmod +x $RPM_BUILD_ROOT%{_bindir}/pcicmd
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -81,4 +84,3 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/*
 %{php_pear_dir}/%{_class}/%{_subclass}/Cli.php
-%{php_pear_dir}/%{_class}/%{_subclass}/pcicmd.php
