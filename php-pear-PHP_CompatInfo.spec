@@ -3,16 +3,15 @@
 %define		_subclass	CompatInfo
 %define		_status		stable
 %define		_pearname	%{_class}_%{_subclass}
-
 Summary:	%{_pearname} - determine minimal requirements for a program
 Summary(pl.UTF-8):	%{_pearname} - określanie minimalnych wymagań programu
 Name:		php-pear-%{_pearname}
-Version:	1.4.3
+Version:	1.5.1
 Release:	1
 License:	PHP 2.02
 Group:		Development/Languages/PHP
 Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tgz
-# Source0-md5:	cc05a26a79e3b2cdd0efb7a7239f5454
+# Source0-md5:	0180665d11d4c3dae706b6cbd3f21ba7
 Patch0:		%{name}-cli.patch
 URL:		http://pear.php.net/package/PHP_CompatInfo/
 BuildRequires:	php-pear-PEAR
@@ -64,8 +63,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{php_pear_dir},%{_bindir}}
 %pear_package_install
 
-mv $RPM_BUILD_ROOT%{php_pear_dir}/%{_class}/%{_subclass}/pcicmd.php $RPM_BUILD_ROOT%{_bindir}/pcicmd
-chmod +x $RPM_BUILD_ROOT%{_bindir}/pcicmd
+install ./%{_bindir}/pci.php $RPM_BUILD_ROOT%{_bindir}/pcicmd
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -82,5 +80,5 @@ rm -rf $RPM_BUILD_ROOT
 
 %files cli
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_bindir}/pcicmd
 %{php_pear_dir}/%{_class}/%{_subclass}/Cli.php

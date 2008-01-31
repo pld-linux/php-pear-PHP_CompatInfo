@@ -1,24 +1,15 @@
---- PHP_CompatInfo-1.3.1/usr/share/pear/PHP/CompatInfo/pcicmd.php	2006-09-02 20:54:21.062030982 +0300
-+++ /usr/bin/php-compatinfo	2006-09-02 20:54:21.000000000 +0300
-@@ -1,15 +1,18 @@
-+#!/usr/bin/php
- <?php
- /**
-  * Get the Compatibility info from PHP CLI
-  *
-- * @version    $Id$
-+ * @version    $Id$
-  * @author     Davey Shafik <davey@php.net>
-  * @package    PHP_CompatInfo
-  * @access     public
-+ * @ignore
+--- PHP_CompatInfo-1.5.1/usr/bin/pci.php~	2008-01-31 11:17:55.000000000 +0200
++++ PHP_CompatInfo-1.5.1/usr/bin/pci.php	2008-01-31 11:18:13.050492160 +0200
+@@ -14,9 +14,10 @@
+  * @access   public
   */
  
 +ini_set('memory_limit', '24M');
-+
  require_once 'PHP/CompatInfo/Cli.php';
  
  $cli = new PHP_CompatInfo_Cli();
  $cli->run();
+ 
 -?>
 \ No newline at end of file
++?>
