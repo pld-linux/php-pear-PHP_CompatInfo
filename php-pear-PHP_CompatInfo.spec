@@ -6,12 +6,12 @@
 Summary:	%{_pearname} - determine minimal requirements for a program
 Summary(pl.UTF-8):	%{_pearname} - określanie minimalnych wymagań programu
 Name:		php-pear-%{_pearname}
-Version:	1.5.1
-Release:	2
+Version:	1.7.0
+Release:	1
 License:	PHP 2.02
 Group:		Development/Languages/PHP
 Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tgz
-# Source0-md5:	0180665d11d4c3dae706b6cbd3f21ba7
+# Source0-md5:	9dc67267da3579b9e96861c5a5563b42
 Patch0:		%{name}-cli.patch
 URL:		http://pear.php.net/package/PHP_CompatInfo/
 BuildRequires:	php-pear-PEAR
@@ -54,6 +54,19 @@ CLI for PHP_CompatInfo.
 %description cli -l pl.UTF-8
 Interfejs linii poleceń dla PHP_CompatInfo.
 
+%package tests
+Summary:	Tests for PEAR::%{_pearname}
+Summary(pl.UTF-8):	Testy dla PEAR::%{_pearname}
+Group:		Development
+Requires:	%{name} = %{epoch}:%{version}-%{release}
+AutoReq:	no
+
+%description tests
+Tests for PEAR::%{_pearname}.
+
+%description tests -l pl.UTF-8
+Testy dla PEAR::%{_pearname}.
+
 %prep
 %pear_package_setup
 %patch0 -p1
@@ -63,7 +76,7 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{php_pear_dir},%{_bindir}}
 %pear_package_install
 
-install ./%{_bindir}/pci.php $RPM_BUILD_ROOT%{_bindir}/pcicmd
+install ./%{_bindir}/pci $RPM_BUILD_ROOT%{_bindir}/pcicmd
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -82,3 +95,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/pcicmd
 %{php_pear_dir}/%{_class}/%{_subclass}/Cli.php
+
+%files tests
+%defattr(644,root,root,755)
+%{php_pear_dir}/tests/PHP_CompatInfo
