@@ -1,5 +1,5 @@
---- PHP_CompatInfo-1.5.1/usr/bin/pci.php~	2008-01-31 11:17:55.000000000 +0200
-+++ PHP_CompatInfo-1.5.1/usr/bin/pci.php	2008-01-31 11:18:13.050492160 +0200
+--- PHP_CompatInfo-1.5.1/usr/bin/pci~	2008-01-31 11:17:55.000000000 +0200
++++ PHP_CompatInfo-1.5.1/usr/bin/pci	2008-01-31 11:18:13.050492160 +0200
 @@ -14,9 +14,10 @@
   * @access   public
   */
