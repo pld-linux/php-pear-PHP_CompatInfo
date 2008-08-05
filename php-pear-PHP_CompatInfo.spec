@@ -6,12 +6,12 @@
 Summary:	%{_pearname} - determine minimal requirements for a program
 Summary(pl.UTF-8):	%{_pearname} - określanie minimalnych wymagań programu
 Name:		php-pear-%{_pearname}
-Version:	1.7.0
+Version:	1.8.0
 Release:	1
-License:	PHP 2.02
+License:	New BSD
 Group:		Development/Languages/PHP
 Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tgz
-# Source0-md5:	9dc67267da3579b9e96861c5a5563b42
+# Source0-md5:	26f5777be0593f086dfbb117a9765db9
 Patch0:		%{name}-cli.patch
 URL:		http://pear.php.net/package/PHP_CompatInfo/
 BuildRequires:	php-pear-PEAR
@@ -83,13 +83,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc install.log
-%doc docs/%{_pearname}/docs/*
+%doc install.log docs/%{_pearname}/docs/*
 %{php_pear_dir}/.registry/*.reg
 %{php_pear_dir}/%{_class}/CompatInfo.php
 %dir %{php_pear_dir}/%{_class}/%{_subclass}
-%{php_pear_dir}/%{_class}/%{_subclass}/const_array.php
-%{php_pear_dir}/%{_class}/%{_subclass}/func_array.php
+%{php_pear_dir}/%{_class}/%{_subclass}/Renderer
+%{php_pear_dir}/%{_class}/%{_subclass}/*.php
+%{php_pear_dir}/data/%{_pearname}
 
 %files cli
 %defattr(644,root,root,755)
