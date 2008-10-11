@@ -6,12 +6,12 @@
 Summary:	%{_pearname} - determine minimal requirements for a program
 Summary(pl.UTF-8):	%{_pearname} - określanie minimalnych wymagań programu
 Name:		php-pear-%{_pearname}
-Version:	1.8.0
+Version:	1.8.1
 Release:	1
 License:	New BSD
 Group:		Development/Languages/PHP
 Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tgz
-# Source0-md5:	26f5777be0593f086dfbb117a9765db9
+# Source0-md5:	a093729a4d205ebc8bf00bcee01de311
 Patch0:		%{name}-cli.patch
 URL:		http://pear.php.net/package/PHP_CompatInfo/
 BuildRequires:	php-pear-PEAR
