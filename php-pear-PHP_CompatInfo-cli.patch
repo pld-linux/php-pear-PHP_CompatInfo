@@ -4,7 +4,7 @@
   * @access   public
   */
  
-+ini_set('memory_limit', '24M');
++ini_set('memory_limit', -1);
  require_once 'PHP/CompatInfo/Cli.php';
  
  $cli = new PHP_CompatInfo_Cli();
