@@ -1,3 +1,5 @@
+# TODO
+# - renderers should be optional?
 %include	/usr/lib/rpm/macros.php
 %define		_class		PHP
 %define		_subclass	CompatInfo
@@ -7,7 +9,7 @@ Summary:	%{_pearname} - determine minimal requirements for a program
 Summary(pl.UTF-8):	%{_pearname} - określanie minimalnych wymagań programu
 Name:		php-pear-%{_pearname}
 Version:	1.8.1
-Release:	1
+Release:	2
 License:	New BSD
 Group:		Development/Languages/PHP
 Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tgz
@@ -71,25 +73,35 @@ Testy dla PEAR::%{_pearname}.
 %pear_package_setup
 %patch0 -p1
 
+mv docs/%{_pearname}/docs/examples .
+
+# pear/tests/pearname/tests -> pear/tests/pearname
+mv ./%{php_pear_dir}/tests/%{_pearname}/{tests/*,}
+rmdir ./%{php_pear_dir}/tests/%{_pearname}/tests
+
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{php_pear_dir},%{_bindir}}
+install -d $RPM_BUILD_ROOT{%{php_pear_dir},%{_bindir},%{_examplesdir}/%{name}-%{version}}
 %pear_package_install
 
 install ./%{_bindir}/pci $RPM_BUILD_ROOT%{_bindir}/pcicmd
+
+cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc install.log docs/%{_pearname}/docs/*
+%doc install.log
 %{php_pear_dir}/.registry/*.reg
 %{php_pear_dir}/%{_class}/CompatInfo.php
 %dir %{php_pear_dir}/%{_class}/%{_subclass}
 %{php_pear_dir}/%{_class}/%{_subclass}/Renderer
 %{php_pear_dir}/%{_class}/%{_subclass}/*.php
 %{php_pear_dir}/data/%{_pearname}
+
+%{_examplesdir}/%{name}-%{version}
 
 %files cli
 %defattr(644,root,root,755)
@@ -98,4 +110,4 @@ rm -rf $RPM_BUILD_ROOT
 
 %files tests
 %defattr(644,root,root,755)
-%{php_pear_dir}/tests/PHP_CompatInfo
+%{php_pear_dir}/tests/%{_pearname}
