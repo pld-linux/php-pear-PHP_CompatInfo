@@ -91,8 +91,11 @@ mv docs/%{_pearname}/docs/examples .
 mv ./%{php_pear_dir}/tests/%{_pearname}/{tests/*,}
 rmdir ./%{php_pear_dir}/tests/%{_pearname}/tests
 
-# pld package name
-%{__sed} -i -e '/ext/s/pecl_http/pecl-http/' ./%{php_pear_dir}/%{_class}/%{_subclass}/func_array.php
+# pld package names
+%{__sed} -i -e '/ext/{
+	s/pecl_http/pecl-http/
+	s/apc/pecl-APC/
+}' ./%{php_pear_dir}/%{_class}/%{_subclass}/func_array.php
 
 %install
 rm -rf $RPM_BUILD_ROOT
