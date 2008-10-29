@@ -95,6 +95,7 @@ rmdir ./%{php_pear_dir}/tests/%{_pearname}/tests
 %{__sed} -i -e '/ext/{
 	s/pecl_http/pecl-http/
 	s/apc/pecl-APC/
+	s/fileinfo/pecl-fileinfo/
 }' ./%{php_pear_dir}/%{_class}/%{_subclass}/func_array.php
 
 %install
