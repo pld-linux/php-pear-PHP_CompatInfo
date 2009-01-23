@@ -6,22 +6,22 @@
 Summary:	%{_pearname} - determine minimal requirements for a program
 Summary(pl.UTF-8):	%{_pearname} - określanie minimalnych wymagań programu
 Name:		php-pear-%{_pearname}
-Version:	1.8.1
-Release:	4
+Version:	1.9.0
+Release:	1
 License:	New BSD
 Group:		Development/Languages/PHP
 Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tgz
-# Source0-md5:	a093729a4d205ebc8bf00bcee01de311
+# Source0-md5:	5396bcc77fc7650a73cb0d76b812b7c3
 Patch0:		%{name}-cli.patch
 URL:		http://pear.php.net/package/PHP_CompatInfo/
 BuildRequires:	php-pear-PEAR
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	rpmbuild(macros) >= 1.300
+Requires:	php(tokenizer)
 Requires:	php-pear
 Requires:	php-pear-Event_Dispatcher >= 1.0.0
 Requires:	php-pear-File_Find >= 1.3.0
 Requires:	php-pear-PEAR-core >= 1:1.5.4
-Requires:	php(tokenizer)
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -71,8 +71,8 @@ Additional format Renderers for PHP_CompatInfo
 Summary:	Tests for PEAR::%{_pearname}
 Summary(pl.UTF-8):	Testy dla PEAR::%{_pearname}
 Group:		Development
-Requires:	%{name} = %{version}-%{release}
 AutoReq:	no
+Requires:	%{name} = %{version}-%{release}
 AutoProv:	no
 
 %description tests
@@ -120,10 +120,8 @@ fi
 %doc install.log optional-packages.txt
 %{php_pear_dir}/.registry/*.reg
 %{php_pear_dir}/%{_class}/CompatInfo.php
-%{php_pear_dir}/%{_class}/%{_subclass}/Parser.php
-%{php_pear_dir}/%{_class}/%{_subclass}/Renderer.php
-%{php_pear_dir}/%{_class}/%{_subclass}/const_array.php
-%{php_pear_dir}/%{_class}/%{_subclass}/func_array.php
+%{php_pear_dir}/%{_class}/%{_subclass}/*.php
+%exclude %{php_pear_dir}/%{_class}/%{_subclass}/Cli.php
 %dir %{php_pear_dir}/%{_class}/%{_subclass}
 %dir %{php_pear_dir}/%{_class}/%{_subclass}/Renderer
 %{php_pear_dir}/%{_class}/%{_subclass}/Renderer/Null.php
