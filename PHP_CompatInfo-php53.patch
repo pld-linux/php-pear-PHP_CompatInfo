@@ -1,0 +1,30 @@
+diff -up PHP_CompatInfo-1.9.0/scripts/configure.php.php53 PHP_CompatInfo-1.9.0/scripts/configure.php
+--- PHP_CompatInfo-1.9.0/scripts/configure.php.53	2009-01-19 11:09:38.000000000 +0100
++++ PHP_CompatInfo-1.9.0/scripts/configure.php	2010-01-24 17:56:31.000000000 +0100
+@@ -169,7 +169,7 @@ if ($ver === false) {
+ }
+ 
+ $constants = array();
+-foreach ($extConstants[$extName] as $cst => $val) {
++foreach ($extConstants[(version_compare(PHP_VERSION, '5.3.0')<0 ? 'internal' : 'Core')] as $cst => $val) {
+     $constants[$cst]['init'] = $ver;
+     $constants[$cst]['name'] = $cst;
+ }
+@@ -206,8 +206,8 @@ file_put_contents($target_directory . $e
+ 
+ foreach ($extensions as $extension) {
+ 
+-    if (!extension_loaded($extension)) {
+-        continue;  // skip this extension if not loaded : prevent error
++    if ($extension=='Core' || !extension_loaded($extension)) {
++        continue;  // skip this extension if 'Core' or not loaded : prevent error
+     }
+ 
+     $ext = new ReflectionExtension($extension);
+@@ -561,4 +561,4 @@ file_put_contents($target_directory . 'f
+ ". $globals .
+ "    );
+ ?>");
+-?>
+\ Pas de fin de ligne à la fin du fichier.
++?>
