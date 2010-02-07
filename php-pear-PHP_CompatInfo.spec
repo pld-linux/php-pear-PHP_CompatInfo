@@ -13,6 +13,7 @@ Group:		Development/Languages/PHP
 Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tgz
 # Source0-md5:	5396bcc77fc7650a73cb0d76b812b7c3
 Patch0:		%{name}-cli.patch
+Patch1:		PHP_CompatInfo-php53.patch
 URL:		http://pear.php.net/package/PHP_CompatInfo/
 BuildRequires:	php-pear-PEAR
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
@@ -71,9 +72,9 @@ Additional format Renderers for PHP_CompatInfo
 Summary:	Tests for PEAR::%{_pearname}
 Summary(pl.UTF-8):	Testy dla PEAR::%{_pearname}
 Group:		Development
-AutoReq:	no
 Requires:	%{name} = %{version}-%{release}
 AutoProv:	no
+AutoReq:	no
 
 %description tests
 Tests for PEAR::%{_pearname}.
@@ -84,6 +85,7 @@ Testy dla PEAR::%{_pearname}.
 %prep
 %pear_package_setup
 %patch0 -p1
+%patch1 -p1
 
 mv docs/%{_pearname}/docs/examples .
 

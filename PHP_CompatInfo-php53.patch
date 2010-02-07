@@ -1,6 +1,5 @@
-diff -up PHP_CompatInfo-1.9.0/scripts/configure.php.php53 PHP_CompatInfo-1.9.0/scripts/configure.php
---- PHP_CompatInfo-1.9.0/scripts/configure.php.53	2009-01-19 11:09:38.000000000 +0100
-+++ PHP_CompatInfo-1.9.0/scripts/configure.php	2010-01-24 17:56:31.000000000 +0100
+--- ./usr/bin/pciconf~	2009-01-19 11:09:38.000000000 +0100
++++ ./usr/bin/pciconf	2010-01-24 17:56:31.000000000 +0100
 @@ -169,7 +169,7 @@ if ($ver === false) {
  }
  
@@ -21,10 +20,3 @@ diff -up PHP_CompatInfo-1.9.0/scripts/configure.php.php53 PHP_CompatInfo-1.9.0/s
      }
  
      $ext = new ReflectionExtension($extension);
-@@ -561,4 +561,4 @@ file_put_contents($target_directory . 'f
- ". $globals .
- "    );
- ?>");
--?>
-\ Pas de fin de ligne à la fin du fichier.
-+?>
