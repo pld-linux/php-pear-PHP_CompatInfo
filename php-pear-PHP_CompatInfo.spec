@@ -7,7 +7,7 @@ Summary:	%{_pearname} - determine minimal requirements for a program
 Summary(pl.UTF-8):	%{_pearname} - określanie minimalnych wymagań programu
 Name:		php-pear-%{_pearname}
 Version:	1.9.0
-Release:	1
+Release:	2
 License:	New BSD
 Group:		Development/Languages/PHP
 Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tgz
@@ -15,19 +15,29 @@ Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tgz
 Patch0:		%{name}-cli.patch
 Patch1:		PHP_CompatInfo-php53.patch
 URL:		http://pear.php.net/package/PHP_CompatInfo/
-BuildRequires:	php-pear-PEAR
+BuildRequires:	php-pear-PEAR >= 1:1.5.4
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	rpmbuild(macros) >= 1.300
-Requires:	php(tokenizer)
+Requires:	php-pcre
 Requires:	php-pear
+Requires:	php-pear-Console_GetArgs >= 1.3.3
+Requires:	php-pear-Console_Table >= 1.1.1
 Requires:	php-pear-Event_Dispatcher >= 1.0.0
 Requires:	php-pear-File_Find >= 1.3.0
 Requires:	php-pear-PEAR-core >= 1:1.5.4
+Requires:	php-tokenizer
+Suggests:	php-pear-Console_ProgressBar
+Suggests:	php-pear-HTML_Table
+Suggests:	php-pear-PHPUnit
+Suggests:	php-pear-Var_Dump
+Suggests:	php-pear-XML_Beautifier
+Suggests:	php-pear-XML_Util
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # exclude optional dependencies
 # NB! Console/Table and Console/Getopt (Console/Getargs) are required by CLI
+%define		_noautoreq	pear(Console/ProgressBar.*) pear(HTML/Table.*) pear(PHPUnit.*) pear(Var/Dump.*) pear(XML/Beautifier.*) pear(XML/Util.*)
 
 %description
 PHP_CompatInfo will parse a file/folder/script/array to find out the
