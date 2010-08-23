@@ -5,13 +5,14 @@ Summary:	%{_pearname} - determine minimal requirements for a program
 Summary(pl.UTF-8):	%{_pearname} - określanie minimalnych wymagań programu
 Name:		php-pear-%{_pearname}
 Version:	1.9.0
-Release:	6
+Release:	7
 License:	New BSD
 Group:		Development/Languages/PHP
 Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tgz
 # Source0-md5:	5396bcc77fc7650a73cb0d76b812b7c3
 Patch0:		%{name}-cli.patch
 Patch1:		PHP_CompatInfo-php53.patch
+Patch2:		path-scripts.patch
 URL:		http://pear.php.net/package/PHP_CompatInfo/
 BuildRequires:	php-pear-PEAR >= 1:1.5.4
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
@@ -82,6 +83,7 @@ Additional format Renderers for PHP_CompatInfo.
 %pear_package_setup
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 mv docs/%{_pearname}/docs/examples .
 
