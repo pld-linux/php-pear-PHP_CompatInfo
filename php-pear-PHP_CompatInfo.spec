@@ -5,7 +5,7 @@ Summary:	%{_pearname} - determine minimal requirements for a program
 Summary(pl.UTF-8):	%{_pearname} - określanie minimalnych wymagań programu
 Name:		php-pear-%{_pearname}
 Version:	1.9.0
-Release:	5
+Release:	6
 License:	New BSD
 Group:		Development/Languages/PHP
 Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tgz
@@ -36,7 +36,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # exclude optional dependencies
 # NB! Console/Table and Console/Getopt (Console/Getargs) are required by CLI
-%define		_noautoreq	pear(Console/ProgressBar.*) pear(HTML/Table.*) pear(PHPUnit.*) pear(Var/Dump.*) pear(XML/Beautifier.*) pear(XML/Util.*)
+%define		_noautoreq	pear(Console/ProgressBar.*) pear(HTML/Table.*) pear(PHPUnit.*) pear(Var/Dump.*) pear(XML/Beautifier.*) pear(XML/Util.*) pear(.*_exceptions.php)
+
 
 %description
 PHP_CompatInfo will parse a file/folder/script/array to find out the
