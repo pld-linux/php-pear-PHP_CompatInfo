@@ -5,7 +5,7 @@ Summary:	%{_pearname} - determine minimal requirements for a program
 Summary(pl.UTF-8):	%{_pearname} - określanie minimalnych wymagań programu
 Name:		php-pear-%{_pearname}
 Version:	1.9.0
-Release:	4
+Release:	5
 License:	New BSD
 Group:		Development/Languages/PHP
 Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tgz
@@ -95,8 +95,9 @@ rmdir ./%{php_pear_dir}/tests/%{_pearname}/tests
 	s/fileinfo/pecl-fileinfo/
 }' ./%{php_pear_dir}/PHP/CompatInfo/func_array.php
 
-# wtf is this
-mv ./%{_bindir}/scripts .
+# used by pciconf, move to datadir
+install -d ./%{php_pear_dir}/data/%{_pearname}
+mv ./%{_bindir}/scripts ./%{php_pear_dir}/data/%{_pearname}
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -126,6 +127,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{php_pear_dir}/PHP/CompatInfo
 %dir %{php_pear_dir}/PHP/CompatInfo/Renderer
 %{php_pear_dir}/PHP/CompatInfo/Renderer/Null.php
+%dir %{php_pear_dir}/data/%{_pearname}
 
 %files Renderers
 %defattr(644,root,root,755)
@@ -136,7 +138,7 @@ rm -rf $RPM_BUILD_ROOT
 %{php_pear_dir}/PHP/CompatInfo/Renderer/Xml.php
 
 # CSS for HTML Renderer
-%{php_pear_dir}/data/%{_pearname}
+%{php_pear_dir}/data/%{_pearname}/pci.css
 
 # examples use other Renderers than null, so packaged here
 %{_examplesdir}/%{name}-%{version}
@@ -146,3 +148,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/pci
 %attr(755,root,root) %{_bindir}/pciconf
 %{php_pear_dir}/PHP/CompatInfo/Cli.php
+
+# data for pciconf
+%{php_pear_dir}/data/%{_pearname}/scripts
+%{php_pear_dir}/data/%{_pearname}/data

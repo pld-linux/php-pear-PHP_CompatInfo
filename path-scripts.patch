@@ -1,0 +1,11 @@
+--- php-pear-PHP_CompatInfo/usr/bin/pciconf~	2010-08-23 23:28:20.000000000 +0300
++++ php-pear-PHP_CompatInfo/usr/bin/pciconf	2010-08-24 00:06:24.135544265 +0300
+@@ -150,7 +150,7 @@
+         exit(1);
+     }
+ } else {
+-    include_once dirname(__FILE__) . $ds . 'scripts' . $ds . 'exceptions.conf.php';
++    include_once '/usr/share/pear/data'.$ds.'PHP_CompatInfo'.$ds.'scripts' . $ds . 'exceptions.conf.php';
+ }
+ 
+ $const_glob_list = array();
