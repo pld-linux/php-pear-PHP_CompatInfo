@@ -111,9 +111,6 @@ install -p ./%{_bindir}/* $RPM_BUILD_ROOT%{_bindir}
 
 cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
-# don't care for tests
-rm -rf $RPM_BUILD_ROOT%{php_pear_dir}/tests/%{_pearname}
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
