@@ -1,6 +1,5 @@
 %define		_status		stable
 %define		_pearname	PHP_CompatInfo
-%include	/usr/lib/rpm/macros.php
 Summary:	%{_pearname} - determine minimal requirements for a program
 Summary(pl.UTF-8):	%{_pearname} - określanie minimalnych wymagań programu
 Name:		php-pear-%{_pearname}
